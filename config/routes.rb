@@ -1,6 +1,7 @@
 Dangerzone::Application.routes.draw do
 
   root 'places#index'
+  #get '/auth/:provider/callback' => 'places#index'
   get '/auth/:provider/callback' => 'sessions#create'
   get 'signout' => 'sessions#destroy', as: 'signout'
 

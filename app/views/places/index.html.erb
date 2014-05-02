@@ -1,4 +1,7 @@
 <h1>Probando el api de Foursquare </h1>
-<pre>
-	<%= @info_foursquare.to_yaml %>
-</pre>
+<% if current_user %>
+	<pre>
+	<%= @client.recent_checkins.to_yaml %>
+	</pre>
+<% end %>
+
