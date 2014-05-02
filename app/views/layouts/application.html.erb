@@ -11,13 +11,16 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 <% if current_user %>
-	<p> Conectado como <%= current_user.name %>
+	<p> Conectado como <%= current_user.name %></p>
+
 	<%= link_to "Cerrar sesión", signout_path %> 
 <% else %>
 	<p><%= link_to "Iniciar sesión con Foursquare", "/auth/foursquare" %> </p>
 <% end %>
 
 <%= yield %>
+
+
 
 </body>
 </html>
