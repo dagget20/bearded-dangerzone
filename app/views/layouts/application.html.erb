@@ -3,6 +3,7 @@
 <head>
   <title>Dangerzone</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -21,6 +22,39 @@
 <%= yield %>
 
 
+<script type="text/javascript">
+	var map;
+	$(document).ready(function(){
+		map = new GMaps ({
+			el: '#map',
+			lat: -12.044357,
+			lng: -77.041311
+
+		})
+
+		var markers = <%= @markers.to_json.html_safe %>;
+		loadResults(markers);
+	});
+
+	function loadResults (markers) {
+		var markers_data = []
+		for (i = 0; i < markers.length; i++){
+			var marker = markers[i];
+			markers_data.push({
+				title: marker.venue_name,
+				lat: marker.venue_lat,
+				lng: marker.venue_lng,
+				icon: marker.friend_icon,
+				infoWindow: {
+				  content: '<p>'+ marker.venue_name + '</p>'
+				}
+			});
+		}
+		map.addMarkers(markers_data);
+    }
+
+
+</script>
 
 </body>
 </html>

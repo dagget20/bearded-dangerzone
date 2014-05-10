@@ -47,5 +47,8 @@ gem 'capistrano'
 # Authentication with Foursquare
 gem 'omniauth-foursquare'
 
-#Gem for foursquare
+# Gem for foursquare
 gem 'foursquare2'
+
+# Google maps Gmapsjs
+gem 'gmapsjs'
